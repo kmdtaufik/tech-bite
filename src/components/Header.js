@@ -48,6 +48,8 @@ export default function Header() {
             variant="ghost"
             size="icon"
             className="text-gray-700 hover:text-black hover:bg-gray-100"
+            //redirect to search page
+            onClick={() => (window.location.href = "/search")}
           >
             <Search className="h-5 w-5" />
             <span className="sr-only">Search</span>
