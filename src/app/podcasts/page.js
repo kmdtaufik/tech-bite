@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Play, Clock, Calendar, Mic, Headphones } from "lucide-react";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 
 const podcasts = [
   {
@@ -328,7 +327,6 @@ export default function PodcastsPage() {
                             <h4 className="font-medium text-black text-sm mb-1 line-clamp-2 hover:text-blue-600 transition-colors cursor-pointer">
                               #{episode.episode}: {episode.title}
                             </h4>{" "}
-                            <Footer />
                             <p className="text-xs text-gray-500">
                               {episode.duration}
                             </p>
