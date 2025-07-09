@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -259,8 +257,6 @@ export default function NewsPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <Header />
-
       <main className="flex-1">
         {/* Page Header */}
         <section className="bg-gray-50 py-12">
@@ -599,8 +595,6 @@ export default function NewsPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
