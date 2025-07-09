@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Play, Clock, Calendar, Mic, Headphones } from "lucide-react";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 const podcasts = [
   {
