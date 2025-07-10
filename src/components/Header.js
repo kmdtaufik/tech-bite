@@ -10,47 +10,38 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Search, Moon, Sun, ChevronDown } from "lucide-react";
+import { Menu, Search, Moon, Sun, ChevronDown, User } from "lucide-react";
 
-const navigationStructure = {
-  main: [{ name: "Home", href: "/" }],
-  categories: [
-    { name: "AI", href: "/ai" },
-    { name: "Gadgets", href: "/gadgets" },
-    { name: "Startups", href: "/startups" },
-    { name: "Programming", href: "/programming" },
-    { name: "Cybersecurity", href: "/cybersecurity" },
-  ],
-  content: [
-    { name: "Featured", href: "/featured" },
-    { name: "Breaking News", href: "/breaking" },
-    { name: "Opinions", href: "/opinions" },
-    { name: "Reviews", href: "/reviews" },
-    { name: "All News", href: "/news" },
-  ],
-  media: [
-    { name: "Videos", href: "/videos" },
-    { name: "Podcasts", href: "/podcasts" },
-  ],
-  community: [
-    { name: "Events", href: "/events" },
-    { name: "Newsletter", href: "/newsletter" },
-    { name: "Tags", href: "/tags" },
-  ],
-  company: [
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ],
-};
+const categoryItems = [
+  { name: "AI", href: "/ai" },
+  { name: "Gadgets", href: "/gadgets" },
+  { name: "Startups", href: "/startups" },
+  { name: "Programming", href: "/programming" },
+  { name: "Cybersecurity", href: "/cybersecurity" },
+];
 
-// Flatten for mobile menu
-const allNavigationItems = [
-  ...navigationStructure.main,
-  ...navigationStructure.categories,
-  ...navigationStructure.content,
-  ...navigationStructure.media,
-  ...navigationStructure.community,
-  ...navigationStructure.company,
+const contentItems = [
+  { name: "Featured", href: "/featured" },
+  { name: "Breaking News", href: "/breaking" },
+  { name: "Opinions", href: "/opinions" },
+  { name: "Reviews", href: "/reviews" },
+  { name: "All News", href: "/news" },
+];
+
+const mediaItems = [
+  { name: "Videos", href: "/videos" },
+  { name: "Podcasts", href: "/podcasts" },
+];
+
+const communityItems = [
+  { name: "Events", href: "/events" },
+  { name: "Newsletter", href: "/newsletter" },
+  { name: "Tags", href: "/tags" },
+];
+
+const aboutItems = [
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -67,7 +58,6 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-6">
-          {/* Home */}
           <Link
             href="/"
             className="text-gray-700 hover:text-black transition-colors duration-200 font-medium"
@@ -77,24 +67,16 @@ export default function Header() {
 
           {/* Categories Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="text-gray-700 hover:text-black font-medium"
-              >
-                Categories
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </Button>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              Categories
+              <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="start"
-              className="w-48 bg-white border border-gray-200 shadow-lg rounded-md"
-            >
-              {navigationStructure.categories.map((item) => (
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md">
+              {categoryItems.map((item) => (
                 <DropdownMenuItem key={item.name} asChild>
                   <Link
                     href={item.href}
-                    className="w-full px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-100 rounded-sm transition-colors duration-200"
+                    className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -105,24 +87,16 @@ export default function Header() {
 
           {/* Content Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="text-gray-700 hover:text-black font-medium"
-              >
-                Content
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </Button>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              Content
+              <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="start"
-              className="w-48 bg-white border border-gray-200 shadow-lg rounded-md"
-            >
-              {navigationStructure.content.map((item) => (
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md">
+              {contentItems.map((item) => (
                 <DropdownMenuItem key={item.name} asChild>
                   <Link
                     href={item.href}
-                    className="w-full px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-100 rounded-sm transition-colors duration-200"
+                    className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -133,24 +107,16 @@ export default function Header() {
 
           {/* Media Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="text-gray-700 hover:text-black font-medium"
-              >
-                Media
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </Button>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              Media
+              <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="start"
-              className="w-48 bg-white border border-gray-200 shadow-lg rounded-md"
-            >
-              {navigationStructure.media.map((item) => (
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md">
+              {mediaItems.map((item) => (
                 <DropdownMenuItem key={item.name} asChild>
                   <Link
                     href={item.href}
-                    className="w-full px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-100 rounded-sm transition-colors duration-200"
+                    className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -161,24 +127,16 @@ export default function Header() {
 
           {/* Community Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="text-gray-700 hover:text-black font-medium"
-              >
-                Community
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </Button>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              Community
+              <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="start"
-              className="w-48 bg-white border border-gray-200 shadow-lg rounded-md"
-            >
-              {navigationStructure.community.map((item) => (
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md">
+              {communityItems.map((item) => (
                 <DropdownMenuItem key={item.name} asChild>
                   <Link
                     href={item.href}
-                    className="w-full px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-100 rounded-sm transition-colors duration-200"
+                    className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -189,24 +147,16 @@ export default function Header() {
 
           {/* About Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="text-gray-700 hover:text-black font-medium"
-              >
-                About
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </Button>
+            <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              About
+              <ChevronDown className="ml-1 h-4 w-4" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="start"
-              className="w-48 bg-white border border-gray-200 shadow-lg rounded-md"
-            >
-              {navigationStructure.company.map((item) => (
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md">
+              {aboutItems.map((item) => (
                 <DropdownMenuItem key={item.name} asChild>
                   <Link
                     href={item.href}
-                    className="w-full px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-100 rounded-sm transition-colors duration-200"
+                    className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -228,6 +178,46 @@ export default function Header() {
             <Search className="h-5 w-5" />
             <span className="sr-only">Search</span>
           </Button>
+
+          {/* User Account Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-gray-700 hover:text-black hover:bg-gray-100"
+              >
+                <User className="h-5 w-5" />
+                <span className="sr-only">Account</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white border border-gray-200 shadow-lg rounded-md">
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/signin"
+                  className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                >
+                  Sign In
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/signup"
+                  className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                >
+                  Sign Up
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/admin"
+                  className="block px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                >
+                  Admin Dashboard
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           {/* Theme Toggle */}
           <Button
@@ -265,103 +255,119 @@ export default function Header() {
                   TechSphere
                 </div>
 
-                {/* Mobile Navigation - Organized by sections */}
-                <div className="space-y-6">
-                  {/* Main */}
-                  <div>
+                <Link
+                  href="/"
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-700 hover:text-black transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-100"
+                >
+                  Home
+                </Link>
+
+                <div className="space-y-2">
+                  <div className="text-sm font-semibold text-gray-900 px-4">
+                    Categories
+                  </div>
+                  {categoryItems.map((item) => (
                     <Link
-                      href="/"
+                      key={item.name}
+                      href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-gray-700 hover:text-black transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 block"
+                      className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
                     >
-                      Home
+                      {item.name}
                     </Link>
-                  </div>
+                  ))}
+                </div>
 
-                  {/* Categories */}
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2 px-4">
-                      Categories
-                    </h3>
-                    {navigationStructure.categories.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-gray-700 hover:text-black transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 block"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                <div className="space-y-2">
+                  <div className="text-sm font-semibold text-gray-900 px-4">
+                    Content
                   </div>
+                  {contentItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
 
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2 px-4">
-                      Content
-                    </h3>
-                    {navigationStructure.content.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-gray-700 hover:text-black transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 block"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                <div className="space-y-2">
+                  <div className="text-sm font-semibold text-gray-900 px-4">
+                    Media
                   </div>
+                  {mediaItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
 
-                  {/* Media */}
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2 px-4">
-                      Media
-                    </h3>
-                    {navigationStructure.media.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-gray-700 hover:text-black transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 block"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                <div className="space-y-2">
+                  <div className="text-sm font-semibold text-gray-900 px-4">
+                    Community
                   </div>
+                  {communityItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
 
-                  {/* Community */}
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2 px-4">
-                      Community
-                    </h3>
-                    {navigationStructure.community.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-gray-700 hover:text-black transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 block"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                <div className="space-y-2">
+                  <div className="text-sm font-semibold text-gray-900 px-4">
+                    About
                   </div>
+                  {aboutItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
 
-                  {/* Company */}
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900 mb-2 px-4">
-                      About
-                    </h3>
-                    {navigationStructure.company.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-gray-700 hover:text-black transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 block"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                <div className="border-t pt-4 space-y-2">
+                  <div className="text-sm font-semibold text-gray-900 px-4">
+                    Account
                   </div>
+                  <Link
+                    href="/signin"
+                    onClick={() => setIsOpen(false)}
+                    className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    href="/signup"
+                    onClick={() => setIsOpen(false)}
+                    className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
+                  >
+                    Sign Up
+                  </Link>
+                  <Link
+                    href="/admin"
+                    onClick={() => setIsOpen(false)}
+                    className="text-gray-700 hover:text-black transition-colors duration-200 py-2 px-6 rounded-lg hover:bg-gray-100 block"
+                  >
+                    Admin Dashboard
+                  </Link>
                 </div>
               </div>
             </SheetContent>
